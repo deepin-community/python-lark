@@ -1,0 +1,40 @@
+#!/usr/bin/make -f
+
+# output every command that modifies files on the build system.
+export DH_VERBOSE=1
+# switch on verbose pybuild output
+export PYBUILD_VERBOSE=1
+
+export PYBUILD_NAME=lark
+
+export PYVERSIONS=$(shell py3versions -s)
+
+export LANG=C.UTF-8
+export LC_ALL=C.UTF-8
+
+export DOCDIR=$(CURDIR)/debian/python-lark-doc/usr/share/doc/python-lark-doc
+
+%:
+	dh $@ --with python3,sphinxdoc --buildsystem=pybuild
+
+override_dh_auto_clean:
+	dh_auto_clean
+	rm -rf build docs/examples lark_parser.egg-info
+
+override_dh_auto_build:
+	dh_auto_build
+	PYTHONPATH=. http_proxy='127.0.0.1:9' sphinx-build -N -bhtml docs/ build/html # HTML generator
+	PYTHONPATH=. http_proxy='127.0.0.1:9' sphinx-build -N -bman  docs/ build/man  # Manpage generator
+
+# Run tests using "python<version> -m tests",
+# see https://github.com/lark-parser/lark/issues/792 for details
+override_dh_auto_test:
+	for python in $(PYVERSIONS); do \
+		PYTHONWARNINGS=d $$python -m tests 2>&1; \
+	done
+
+override_dh_installexamples:
+	dh_installexamples
+	# Replace duplicate files in HTML documentation directory with symbolic links
+	jdupes -rlO $(DOCDIR)/examples $(DOCDIR)/html
+	find $(DOCDIR) -name __pycache__ | xargs --no-run-if-empty rm -rf

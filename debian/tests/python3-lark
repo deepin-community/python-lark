@@ -1,0 +1,17 @@
+#!/bin/sh
+
+set -eu
+
+cp -r tests "$AUTOPKGTEST_TMP/"
+
+cd "$AUTOPKGTEST_TMP"
+
+# Do not run nearley tests
+# (see https://bugs.debian.org/941657#22 for background information)
+rm -rf tests/test_nearley
+
+# Run tests using "python<version> -m tests",
+# see https://github.com/lark-parser/lark/issues/792 for details
+for python in $(py3versions -s); do
+	PYTHONWARNINGS=d $python -m tests 2>&1
+done

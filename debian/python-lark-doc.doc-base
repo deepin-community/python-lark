@@ -1,0 +1,9 @@
+Document: python-lark
+Title: Lark Manual
+Author: Erez Shinan <erezshin@gmail.com>
+Abstract: Documentation on how to use the lark parsing library
+Section: Programming/Python
+
+Format: HTML
+Index: /usr/share/doc/python-lark-doc/html/index.html
+Files: /usr/share/doc/python-lark-doc/html/*.html

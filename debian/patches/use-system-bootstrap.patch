@@ -1,0 +1,21 @@
+Description: Using system-provided bootstrap.min.css to fix privacy breach.
+Author: Andrius Merkys <merkys@debian.org>
+Forwarded: not-needed
+--- a/docs/_static/sppf/sppf.html
++++ b/docs/_static/sppf/sppf.html
+@@ -3,7 +3,7 @@
+ <html lang="en-us">
+   <head>
+     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+-<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
++<link rel="stylesheet" type="text/css" href="file:///usr/share/javascript/bootstrap4/css/bootstrap.min.css">
+ 
+ <body>
+ 
+@@ -209,4 +209,4 @@
+   </div>
+ 
+ </footer>
+-</body>
+\ No newline at end of file
++</body>

@@ -1,0 +1,6 @@
+# Upstream does not provide signed releases
+python-lark source: debian-watch-does-not-check-gpg-signature
+
+# override_dh_auto_test does not need to check DEB_BUILD_OPTIONS
+# for debhelper compat level 13 or greater (see #568897 for details)
+python-lark source: override_dh_auto_test-does-not-check-DEB_BUILD_OPTIONS

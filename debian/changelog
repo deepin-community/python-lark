@@ -1,0 +1,131 @@
+python-lark (0.12.0-1) unstable; urgency=medium
+
+  * New upstream version 0.12.0
+  * Dropping upstream-integrated patch.
+
+ -- Andrius Merkys <merkys@debian.org>  Sun, 05 Sep 2021 01:15:05 -0400
+
+python-lark (0.11.3-2) unstable; urgency=medium
+
+  * Bump Standards-Version to 4.6.0 (no changes required)
+  * Add patch which fixes typos in comment of example code
+  * Run build time and autopkgtest tests using "python<version> -m tests"
+  * Suppress lintian tag override_dh_auto_test-does-not-check-DEB_BUILD_OPTIONS
+  * Drop patch which disables some unit tests
+  * Update packaging copyright years
+
+ -- Peter Wienemann <fossdev@posteo.de>  Sun, 29 Aug 2021 11:45:54 +0200
+
+python-lark (0.11.3-1) unstable; urgency=medium
+
+  [ Debian Janitor ]
+  * Set upstream metadata fields: Repository.
+  * Remove obsolete fields Contact, Name from debian/upstream/metadata
+    (already present in machine-readable debian/copyright).
+
+  [ Andrius Merkys ]
+  * New upstream version 0.11.3
+  * Removing patches as they are integrated upstream.
+  * Skipping tests sensitive to relative paths.
+  * Removing __pycache__ directories from examples in documentation.
+  * Fixing lintian error privacy-breach-uses-embedded-file by using
+    system-provided bootstrap.min.css.
+
+ -- Andrius Merkys <merkys@debian.org>  Wed, 25 Aug 2021 01:49:35 -0400
+
+python-lark (0.10.0-1) unstable; urgency=medium
+
+  [ Ondřej Nový ]
+  * d/control: Update Maintainer field with new Debian Python Team
+    contact address.
+  * d/control: Update Vcs-* fields with new Debian Python Team Salsa
+    layout.
+
+  [ Peter Wienemann ]
+  * New upstream version 0.10.0
+  * Remove Lintian override for mailing-list-obsolete-in-debian-infrastructure
+  * Switch from mkdocs to sphinxdoc for documentation building
+  * Build and install man page
+  * d/rules: Drop IDE removal. New doc build dir does not contain IDE.
+  * Add patches:
+    - move man page to section 7
+    - fix various typos
+  * Replace duplicate files in HTML documentation with symlinks
+
+  [ Andrius Merkys ]
+  * Cleaning up docs/examples/.
+
+ -- Peter Wienemann <fossdev@posteo.de>  Sun, 25 Oct 2020 13:26:17 +0100
+
+python-lark (0.9.0-1) unstable; urgency=medium
+
+  * New upstream version 0.9.0
+
+ -- Peter Wienemann <fossdev@posteo.de>  Tue, 07 Jul 2020 19:13:49 +0200
+
+python-lark (0.8.9-1) unstable; urgency=medium
+
+  * New upstream version 0.8.9
+
+ -- Peter Wienemann <fossdev@posteo.de>  Tue, 16 Jun 2020 18:16:01 +0200
+
+python-lark (0.8.8-1) unstable; urgency=medium
+
+  * New upstream version 0.8.8
+
+ -- Peter Wienemann <fossdev@posteo.de>  Sun, 14 Jun 2020 12:02:35 +0200
+
+python-lark (0.8.6-1) unstable; urgency=medium
+
+  * New upstream version 0.8.6
+  * d/source/lintian-overrides: Suppress obsolete mailing list message
+  * d/rules: Remove IDE (uses js and css code from CDNs)
+  * d/{control,rules}: Replace bundled jquery.js with packaged version
+  * d/control: Bump debhelper-compat level to 13
+  * d/copyright: Add copyright for file lark/__pyinstaller/hook-lark.py
+
+ -- Peter Wienemann <fossdev@posteo.de>  Thu, 11 Jun 2020 18:23:11 +0200
+
+python-lark (0.8.5-1) unstable; urgency=medium
+
+  * New upstream version 0.8.5
+
+ -- Andrius Merkys <merkys@debian.org>  Thu, 02 Apr 2020 07:34:52 -0400
+
+python-lark (0.8.2-2) unstable; urgency=medium
+
+  * Team upload.
+  * Update d/tests/control and d/tests/python3-lark so that autopkgtest is
+    reliabily run for all supported python3 versions
+
+ -- Scott Kitterman <scott@kitterman.com>  Wed, 25 Mar 2020 00:35:11 -0400
+
+python-lark (0.8.2-1) unstable; urgency=medium
+
+  * New upstream version 0.8.2
+  * d/copyright: Change standalone parser license to MPL-2.0
+  * d/control: Bump Standards-Version to 4.5.0 (no changes required)
+  * Drop patch fix-executable-not-elf-or-script-warning (fixed upstream)
+
+ -- Peter Wienemann <fossdev@posteo.de>  Sat, 07 Mar 2020 13:28:37 +0100
+
+python-lark (0.8.1-1) unstable; urgency=medium
+
+  * New upstream version 0.8.1
+  * Adding myself to the list of uploaders.
+  * Updating debian/copyright.
+
+ -- Andrius Merkys <merkys@debian.org>  Tue, 28 Jan 2020 01:22:20 -0500
+
+python-lark (0.7.8-2) unstable; urgency=medium
+
+  * Team upload.
+  * Removing lark_parser.egg-info in dh_auto_clean target.
+
+ -- Andrius Merkys <merkys@debian.org>  Mon, 13 Jan 2020 10:07:42 -0500
+
+python-lark (0.7.8-1) unstable; urgency=medium
+
+  * Initial release (Closes: #941657)
+
+ -- Peter Wienemann <fossdev@posteo.de>  Wed, 01 Jan 2020 21:12:43 +0100

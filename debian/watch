@@ -1,0 +1,13 @@
+# Watch control file for uscan
+# See uscan(1) for format
+
+# Compulsory line, this is a version 4 file
+version=4
+
+# PGP signature mangle, so foo.tar.gz has foo.tar.gz.sig
+#opts="pgpsigurlmangle=s%$%.sig%"
+
+# Look for new releases on GitHub
+opts="filenamemangle=s%(?:.*?)?v?(\d[\d.]*)\.tar\.gz%lark-$1.tar.gz%" \
+   https://github.com/lark-parser/lark/tags \
+   (?:.*?/)?v?(\d[\d.]*)\.tar\.gz debian uupdate
