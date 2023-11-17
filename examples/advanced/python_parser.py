@@ -12,23 +12,17 @@ from io import open
 import glob, time
 
 from lark import Lark
-from lark.indenter import Indenter
+from lark.indenter import PythonIndenter
 
-# __path__ = os.path.dirname(__file__)
 
-class PythonIndenter(Indenter):
-    NL_type = '_NEWLINE'
-    OPEN_PAREN_types = ['LPAR', 'LSQB', 'LBRACE']
-    CLOSE_PAREN_types = ['RPAR', 'RSQB', 'RBRACE']
-    INDENT_type = '_INDENT'
-    DEDENT_type = '_DEDENT'
-    tab_len = 8
+kwargs = dict(postlex=PythonIndenter(), start='file_input')
 
-kwargs = dict(rel_to=__file__, postlex=PythonIndenter(), start='file_input')
+# Official Python grammar by Lark
+python_parser3 = Lark.open_from_package('lark', 'python.lark', ['grammars'], parser='lalr', **kwargs)
 
-python_parser2 = Lark.open('python2.lark', parser='lalr', **kwargs)
-python_parser3 = Lark.open('python3.lark',parser='lalr', **kwargs)
-python_parser2_earley = Lark.open('python2.lark', parser='earley', lexer='standard', **kwargs)
+# Local Python2 grammar
+python_parser2 = Lark.open('python2.lark', rel_to=__file__, parser='lalr', **kwargs)
+python_parser2_earley = Lark.open('python2.lark', rel_to=__file__, parser='earley', lexer='basic', **kwargs)
 
 try:
     xrange
@@ -46,9 +40,9 @@ def _read(fn, *args):
 def _get_lib_path():
     if os.name == 'nt':
         if 'PyPy' in sys.version:
-            return os.path.join(sys.prefix, 'lib-python', sys.winver)
+            return os.path.join(sys.base_prefix, 'lib-python', sys.winver)
         else:
-            return os.path.join(sys.prefix, 'Lib')
+            return os.path.join(sys.base_prefix, 'Lib')
     else:
         return [x for x in sys.path if x.endswith('%s.%s' % sys.version_info[:2])][0]
 
@@ -83,4 +77,3 @@ if __name__ == '__main__':
     test_python_lib()
     # test_earley_equals_lalr()
     # python_parser3.parse(_read(sys.argv[1]) + '\n')
-

@@ -56,7 +56,7 @@ Install Lark
 
 .. code:: bash
 
-   $ pip install lark-parser
+   $ pip install lark
 
 Syntax Highlighting
 -------------------
@@ -89,6 +89,7 @@ Resources
    -  Unofficial
 
       -  `Program Synthesis is Possible`_ - Creates a DSL for Z3
+      -  `Using Lark to Parse Text - Robin Reynolds-Haertle (PyCascades 2023) <https://www.youtube.com/watch?v=CeOtqlh0UuQ>`_ (video presentation)
 
 -  Guides
 
@@ -113,7 +114,7 @@ Resources
 
 .. _Examples: https://github.com/lark-parser/lark/tree/master/examples
 .. _Third-party examples: https://github.com/ligurio/lark-grammars
-.. _Online IDE: https://lark-parser.github.io/ide
+.. _Online IDE: https://lark-parser.org/ide
 .. _How to write a DSL: http://blog.erezsh.com/how-to-write-a-dsl-in-python-with-lark/
 .. _Program Synthesis is Possible: https://www.cs.cornell.edu/~asampson/blog/minisynth.html
 .. _Cheatsheet (PDF): _static/lark_cheatsheet.pdf

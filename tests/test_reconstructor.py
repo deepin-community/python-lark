@@ -78,7 +78,7 @@ class TestReconstructor(TestCase):
         stmt: var op var
         !op: ("+" | "-" | "*" | "/")
         var: WORD
-        NL: /(\\r?\\n)+\s*/
+        NL: /(\\r?\\n)+\\s*/
         """ + common
 
         code = """
@@ -93,7 +93,7 @@ class TestReconstructor(TestCase):
         ?mult_stmt: sum_stmt ["*" sum_stmt]
         ?sum_stmt: var ["+" var]
         var: WORD
-        NL: /(\\r?\\n)+\s*/
+        NL: /(\\r?\\n)+\\s*/
         """ + common
 
         code = ['a', 'a*b', 'a+b', 'a*b+c', 'a+b*c', 'a+b*c+d']
@@ -160,7 +160,7 @@ class TestReconstructor(TestCase):
         This test checks that a parse tree built with a grammar containing only ascii characters can be reconstructed
         with a grammar that has unicode rules (or vice versa). The original bug assigned ANON terminals to unicode
         keywords, which offsets the ANON terminal count in the unicode grammar and causes subsequent identical ANON
-        tokens (e.g., `+=`) to mis-match between the two grammars.
+        tokens (e.g., `+=`) to mismatch between the two grammars.
         """
 
         g1 = """
@@ -168,7 +168,7 @@ class TestReconstructor(TestCase):
         stmt: "keyword" var op var
         !op: ("+=" | "-=" | "*=" | "/=")
         var: WORD
-        NL: /(\\r?\\n)+\s*/
+        NL: /(\\r?\\n)+\\s*/
         """ + common
 
         g2 = """
@@ -176,15 +176,15 @@ class TestReconstructor(TestCase):
         stmt: "குறிப்பு" var op var
         !op: ("+=" | "-=" | "*=" | "/=")
         var: WORD
-        NL: /(\\r?\\n)+\s*/
+        NL: /(\\r?\\n)+\\s*/
         """ + common
 
         code = """
         keyword x += y
         """
 
-        l1 = Lark(g1, parser='lalr')
-        l2 = Lark(g2, parser='lalr')
+        l1 = Lark(g1, parser='lalr', maybe_placeholders=False)
+        l2 = Lark(g2, parser='lalr', maybe_placeholders=False)
         r = Reconstructor(l2)
 
         tree = l1.parse(code)

@@ -4,16 +4,15 @@ Upstream-Contact: Erez Shinan <erezshin@gmail.com>
 Source: https://github.com/lark-parser/lark
 
 Files: *
-Copyright: 2017-2021, Erez Shinan <erezshin@gmail.com>
+Copyright: 2017-2023, Erez Shinan <erezshin@gmail.com>
 License: MIT
 
 Files: debian/*
-Copyright: 2019-2021, Peter Wienemann <fossdev@posteo.de>
- 2019-2021, Andrius Merkys <merkys@debian.org>
+Copyright: 2019-2023, Peter Wienemann <fossdev@posteo.de>
+ 2019-2023, Andrius Merkys <merkys@debian.org>
 License: MIT
 
 Files:
- examples/standalone/json_parser.py
  lark/tools/standalone.py
 Copyright: 2018-2021, Erez Shinan <erezshin@gmail.com>
 License: MPL-2.0

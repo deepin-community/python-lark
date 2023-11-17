@@ -6,6 +6,7 @@ Uploaders: Peter Wienemann <fossdev@posteo.de>,
            Andrius Merkys <merkys@debian.org>
 Build-Depends: debhelper-compat (= 13),
                dh-python,
+               pybuild-plugin-pyproject,
                python3-all,
                python3-setuptools,
                python3-sphinx,
@@ -14,7 +15,7 @@ Build-Depends: debhelper-compat (= 13),
                python3-sphinx-gallery,
                python3-recommonmark,
                jdupes
-Standards-Version: 4.6.0
+Standards-Version: 4.6.2
 Rules-Requires-Root: no
 Homepage: https://github.com/lark-parser/lark
 Vcs-Browser: https://salsa.debian.org/python-team/packages/python-lark
@@ -24,7 +25,9 @@ Package: python3-lark
 Architecture: all
 Depends: ${python3:Depends},
          ${misc:Depends}
-Suggests: python-lark-doc
+Suggests: python-lark-doc,
+          python3-atomicwrites,
+          python3-regex
 Description: Parsing library for Python (Python 3)
  lark is a parsing library for Python which allows one to parse any
  context-free grammar. It has implemented the following parsing
@@ -38,6 +41,7 @@ Section: doc
 Depends: libjs-bootstrap4,
          ${sphinxdoc:Depends},
          ${misc:Depends}
+Multi-Arch: foreign
 Description: Parsing library for Python (common documentation)
  lark is a parsing library for Python which allows one to parse any
  context-free grammar. It has implemented the following parsing

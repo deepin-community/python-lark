@@ -23,7 +23,7 @@ Lark comes with a tool to convert grammars from [Nearley](https://github.com/Har
 
 1. Install Lark with the `nearley` component:
 ```bash
-pip install lark-parser[nearley]
+pip install lark[nearley]
 ```
 
 2. Acquire a copy of the Nearley codebase. This can be done using:
@@ -68,4 +68,3 @@ python -m lark.tools.nearley nearley/examples/calculator/arithmetic.ne main near
 - Lark currently cannot export grammars to Nearley
 
 These might get added in the future, if enough users ask for them.
-
