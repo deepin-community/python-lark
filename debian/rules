@@ -19,7 +19,7 @@ export DOCDIR=$(CURDIR)/debian/python-lark-doc/usr/share/doc/python-lark-doc
 
 override_dh_auto_clean:
 	dh_auto_clean
-	rm -rf build docs/examples lark_parser.egg-info
+	rm -rf build docs/examples lark.egg-info
 
 override_dh_auto_build:
 	dh_auto_build

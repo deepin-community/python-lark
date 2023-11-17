@@ -6,7 +6,7 @@ Lark can parse all context-free languages. To put it simply, it means that it is
 
 **Who is it for?**
 
-   - **Beginners**: Lark is very friendly for experimentation. It can parse any grammar you throw at it, no matter how complicated or ambiguous, and do so efficiently. It also constructs an annotated parse-tree for you, using only the grammar and an input, and it gives you convienient and flexible tools to process that parse-tree.
+   - **Beginners**: Lark is very friendly for experimentation. It can parse any grammar you throw at it, no matter how complicated or ambiguous, and do so efficiently. It also constructs an annotated parse-tree for you, using only the grammar and an input, and it gives you convenient and flexible tools to process that parse-tree.
 
    - **Experts**: Lark implements both Earley(SPPF) and LALR(1), and several different lexers, so you can trade-off power and speed, according to your requirements. It also provides a variety of sophisticated features and utilities.
 
@@ -26,14 +26,14 @@ Most importantly, Lark will save you time and prevent you from getting parsing h
 
 - [Documentation @readthedocs](https://lark-parser.readthedocs.io/)
 - [Cheatsheet (PDF)](/docs/_static/lark_cheatsheet.pdf)
-- [Online IDE](https://lark-parser.github.io/ide)
+- [Online IDE](https://lark-parser.org/ide)
 - [Tutorial](/docs/json_tutorial.md) for writing a JSON parser.
 - Blog post: [How to write a DSL with Lark](http://blog.erezsh.com/how-to-write-a-dsl-in-python-with-lark/)
 - [Gitter chat](https://gitter.im/lark-parser/Lobby)
 
 ### Install Lark
 
-    $ pip install lark-parser --upgrade
+    $ pip install lark --upgrade
 
 Lark has no dependencies.
 
@@ -98,15 +98,15 @@ Lark is great at handling ambiguity. Here is the result of parsing the phrase "f
  - **LALR(1)** parser
     - Fast and light, competitive with PLY
     - Can generate a stand-alone parser ([read more](docs/tools.md#stand-alone-parser))
- - **CYK** parser, for highly ambiguous grammars
  - **EBNF** grammar
  - **Unicode** fully supported
- - **Python 2 & 3** compatible
  - Automatic line & column tracking
+ - Interactive parser for advanced parsing flows and debugging
+ - Grammar composition - Import terminals and rules from other grammars
  - Standard library of terminals (strings, numbers, names, etc.)
  - Import grammars from Nearley.js ([read more](/docs/tools.md#importing-grammars-from-nearleyjs))
- - Extensive test suite [![codecov](https://codecov.io/gh/lark-parser/lark/branch/master/graph/badge.svg?token=lPxgVhCVPK)](https://codecov.io/gh/lark-parser/lark) 
- - MyPy support using type stubs
+ - Extensive test suite [![codecov](https://codecov.io/gh/lark-parser/lark/branch/master/graph/badge.svg?token=lPxgVhCVPK)](https://codecov.io/gh/lark-parser/lark)
+ - Type annotations (MyPy support)
  - And much more!
 
 See the full list of [features here](https://lark-parser.readthedocs.io/en/latest/features.html)
@@ -116,7 +116,7 @@ See the full list of [features here](https://lark-parser.readthedocs.io/en/lates
 
 #### Performance comparison
 
-Lark is the fastest and lightest (lower is better)
+Lark is fast and light (lower is better)
 
 ![Run-time Comparison](docs/_static/comparison_runtime.png)
 
@@ -125,9 +125,7 @@ Lark is the fastest and lightest (lower is better)
 
 Check out the [JSON tutorial](/docs/json_tutorial.md#conclusion) for more details on how the comparison was made.
 
-*Note: I really wanted to add PLY to the benchmark, but I couldn't find a working JSON parser anywhere written in PLY. If anyone can point me to one that actually works, I would be happy to add it!*
-
-*Note 2: The parsimonious code has been optimized for this specific test, unlike the other benchmarks (Lark included). Its "real-world" performance may not be as good.*
+For a more thorough and objective comparison, checkout the [Python Parsing Benchmarks](https://github.com/goodmami/python-parsing-benchmarks) repo.
 
 #### Feature comparison
 
@@ -147,9 +145,12 @@ Check out the [JSON tutorial](/docs/json_tutorial.md#conclusion) for more detail
 ### Projects using Lark
 
  - [Poetry](https://github.com/python-poetry/poetry-core) - A utility for dependency management and packaging
- - [tartiflette](https://github.com/dailymotion/tartiflette) - a GraphQL server by Dailymotion
+ - [Vyper](https://github.com/vyperlang/vyper) - Pythonic Smart Contract Language for the EVM
+ - [PyQuil](https://github.com/rigetti/pyquil) - Python library for quantum programming using Quil
+ - [Preql](https://github.com/erezsh/preql) - An interpreted relational query language that compiles to SQL
  - [Hypothesis](https://github.com/HypothesisWorks/hypothesis) - Library for property-based testing
  - [mappyfile](https://github.com/geographika/mappyfile) - a MapFile parser for working with MapServer configuration
+ - [tartiflette](https://github.com/dailymotion/tartiflette) - GraphQL server by Dailymotion
  - [synapse](https://github.com/vertexproject/synapse) - an intelligence analysis platform
  - [Datacube-core](https://github.com/opendatacube/datacube-core) - Open Data Cube analyses continental scale Earth Observation data through time
  - [SPFlow](https://github.com/SPFlow/SPFlow) - Library for Sum-Product Networks
@@ -162,8 +163,9 @@ Check out the [JSON tutorial](/docs/json_tutorial.md#conclusion) for more detail
  - [pytreeview](https://gitlab.com/parmenti/pytreeview) - a lightweight tree-based grammar explorer
  - [harmalysis](https://github.com/napulen/harmalysis) - A language for harmonic analysis and music theory
  - [gersemi](https://github.com/BlankSpruce/gersemi) - A CMake code formatter
+ - [MistQL](https://github.com/evinism/mistql) - A query language for JSON-like structures
 
-Using Lark? Send me a message and I'll add your project!
+[Full list](https://github.com/lark-parser/lark/network/dependents?package_id=UGFja2FnZS01MjI1OTE0NQ%3D%3D)
 
 ## License
 
@@ -171,13 +173,19 @@ Lark uses the [MIT license](LICENSE).
 
 (The standalone tool is under MPL2)
 
-## Contribute
+## Contributors
 
-Lark is currently accepting pull-requests. See [How to develop Lark](/docs/how_to_develop.md)
+Lark accepts pull-requests. See [How to develop Lark](/docs/how_to_develop.md)
+
+Big thanks to everyone who contributed so far:
+
+<a href="https://github.com/lark-parser/lark/graphs/contributors">
+  <img src="https://contributors-img.web.app/image?repo=lark-parser/lark" />
+</a>
 
 ## Sponsor
 
-If you like Lark, and want to see it grow, please consider [sponsoring us!](https://github.com/sponsors/lark-parser)
+If you like Lark, and want to see us grow, please consider [sponsoring us!](https://github.com/sponsors/lark-parser)
 
 ## Contact the author
 

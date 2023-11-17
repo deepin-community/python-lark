@@ -13,7 +13,7 @@ Using Unicode character classes with ``regex``
 
 Python's builtin ``re`` module has a few persistent known bugs and also won't parse
 advanced regex features such as character classes.
-With ``pip install lark-parser[regex]``, the ``regex`` module will be
+With ``pip install lark[regex]``, the ``regex`` module will be
 installed alongside lark and can act as a drop-in replacement to ``re``.
 
 Any instance of Lark instantiated with ``regex=True`` will use the ``regex`` module instead of ``re``.
@@ -39,7 +39,7 @@ Tree
 
 .. autoclass:: lark.Tree
     :members: pretty, find_pred, find_data, iter_subtrees, scan_values,
-        iter_subtrees_topdown
+        iter_subtrees_topdown, __rich__
 
 Token
 -----
@@ -81,7 +81,7 @@ InteractiveParser
 ast_utils
 ---------
 
-For an example of using ``ast_utils``, see `/examples/advanced/create_ast.py`_ 
+For an example of using ``ast_utils``, see `/examples/advanced/create_ast.py`_
 
 .. autoclass:: lark.ast_utils.Ast
 

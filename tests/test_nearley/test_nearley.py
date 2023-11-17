@@ -15,11 +15,16 @@ TEST_PATH    = os.path.abspath(os.path.dirname(__file__))
 NEARLEY_PATH = os.path.join(TEST_PATH, 'nearley')
 BUILTIN_PATH = os.path.join(NEARLEY_PATH, 'builtin')
 
-if not os.path.exists(NEARLEY_PATH):
-    logger.warn("Nearley not installed. Skipping Nearley tests!")
+if not os.path.exists(BUILTIN_PATH):
+    logger.warning("Nearley not included. Skipping Nearley tests! (use git submodule to add)")
     raise ImportError("Skipping Nearley tests!")
 
-import js2py    # Ensures that js2py exists, to avoid failing tests
+try:
+    import js2py    # Ensures that js2py exists, to avoid failing tests
+except RuntimeError as e:
+    if "python version" in str(e):
+        raise ImportError("js2py does not support this python version")
+    raise
 
 
 class TestNearley(unittest.TestCase):

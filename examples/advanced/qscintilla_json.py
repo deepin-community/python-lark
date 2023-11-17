@@ -6,14 +6,15 @@ This example shows how to write a syntax-highlighted editor with Qt and Lark
 
 Requirements:
 
-  PyQt5==5.10.1
-  QScintilla==2.10.4
+  PyQt5==5.15.8
+  QScintilla==2.13.4
 """
 
 import sys
 import textwrap
 
-from PyQt5.Qt import *  # noqa
+from PyQt5.QtWidgets import QApplication
+from PyQt5.QtGui import QColor, QFont, QFontMetrics
 
 from PyQt5.Qsci import QsciScintilla
 from PyQt5.Qsci import QsciLexerCustom
@@ -77,7 +78,7 @@ class LexerJson(QsciLexerCustom):
             %ignore WS
         '''
 
-        self.lark = Lark(grammar, parser=None, lexer='standard')
+        self.lark = Lark(grammar, parser=None, lexer='basic')
         # All tokens: print([t.name for t in self.lark.parser.lexer.tokens])
 
     def defaultPaper(self, style):
@@ -96,7 +97,7 @@ class LexerJson(QsciLexerCustom):
 
         try:
             for token in self.lark.lex(text):
-                ws_len = token.pos_in_stream - last_pos
+                ws_len = token.start_pos - last_pos
                 if ws_len:
                     self.setStyling(ws_len, 0)    # whitespace
 
@@ -104,7 +105,7 @@ class LexerJson(QsciLexerCustom):
                 self.setStyling(
                     token_len, self.token_styles.get(token.type, 0))
 
-                last_pos = token.pos_in_stream + token_len
+                last_pos = token.start_pos + token_len
         except Exception as e:
             print(e)
 

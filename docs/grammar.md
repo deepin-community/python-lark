@@ -43,7 +43,9 @@ Lark grammars are composed of a list of definitions and directives, each on its 
 ```
 
 
-**Comments** start with `//` and last to the end of the line (C++ style)
+**Comments** start with
+either `//` (C++ style) or `#` (Python style, since version 1.1.6)
+and last to the end of the line.
 
 Lark begins the parse with the rule 'start', unless specified otherwise in the options.
 
@@ -99,11 +101,13 @@ num_list: "[" _separated{NUMBER, ","} "]"   // Will match "[1, 2, 3]" etc.
 
 ### Priority
 
-Terminals can be assigned priority only when using a lexer (future versions may support Earley's dynamic lexing).
+Terminals can be assigned a priority to influence lexing. Terminal priorities
+are signed integers with a default value of 0.
 
-Priority can be either positive or negative. If not specified for a terminal, it defaults to 1.
+When using a lexer, the highest priority terminals are always matched first.
 
-Highest priority terminals are always matched first.
+When using Earley's dynamic lexing, terminal priorities are used to prefer
+certain lexings and resolve ambiguity.
 
 ### Regexp Flags
 
@@ -124,7 +128,7 @@ Regexps/strings of different flags can only be concatenated in Python 3.6+
 
 #### Notes for when using a lexer:
 
-When using a lexer (standard or contextual), it is the grammar-author's responsibility to make sure the literals don't collide, or that if they do, they are matched in the desired order. Literals are matched according to the following precedence:
+When using a lexer (basic or contextual), it is the grammar-author's responsibility to make sure the literals don't collide, or that if they do, they are matched in the desired order. Literals are matched according to the following precedence:
 
 1. Highest priority first (priority is specified as: TERM.number: ...)
 2. Length of match (for regexps, the longest theoretical match is used)
@@ -228,9 +232,12 @@ four_words: word ~ 4
 
 ### Priority
 
-Rules can be assigned priority only when using Earley (future versions may support LALR as well).
+Like terminals, rules can be assigned a priority. Rule priorities are signed
+integers with a default value of 0.
 
-Priority can be either positive or negative. In not specified for a terminal, it's assumed to be 1 (i.e. the default).
+When using LALR, the highest priority rules are used to resolve collision errors.
+
+When using Earley, rule priorities are used to resolve ambiguity.
 
 <a name="dirs"></a>
 ## Directives

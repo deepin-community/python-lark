@@ -11,29 +11,20 @@
  - Flexible error handling by using an interactive parser interface (LALR only)
  - Automatic line & column tracking (for both tokens and matched rules)
  - Automatic terminal collision resolution
+  - Warns on regex collisions using the optional `interegular` library. ([read more](how_to_use.html#regex-collisions))
+ - Grammar composition - Import terminals and rules from other grammars (see [example](https://github.com/lark-parser/lark/tree/master/examples/composition)).
  - Standard library of terminals (strings, numbers, names, etc.)
  - Unicode fully supported
  - Extensive test suite
- - MyPy support using type stubs
- - Python 2 & Python 3 compatible
+ - Type annotations (MyPy support)
  - Pure-Python implementation
 
 [Read more about the parsers](parsers.md)
 
 ## Extra features
-
-  - Import rules and tokens from other Lark grammars, for code reuse and modularity.
   - Support for external regex module ([see here](classes.html#using-unicode-character-classes-with-regex))
   - Import grammars from Nearley.js ([read more](tools.html#importing-grammars-from-nearleyjs))
   - CYK parser
   - Visualize your parse trees as dot or png files ([see_example](https://github.com/lark-parser/lark/blob/master/examples/fruitflies.py))
-
-
-### Experimental features
-  - Automatic reconstruction of input from parse-tree (see examples)
-
-### Planned features (not implemented yet)
- - Generate code in other languages than Python
- - Grammar composition
- - LALR(k) parser
- - Full regexp-collision support using NFAs
+  - Automatic reconstruction of input from parse-tree (see [example](https://github.com/lark-parser/lark/blob/master/examples/advanced/reconstruct_json.py) and [another example](https://github.com/lark-parser/lark/blob/master/examples/advanced/reconstruct_python.py))
+  - Use Lark grammars in [Julia](https://github.com/jamesrhester/Lerche.jl) and [Javascript](https://github.com/lark-parser/Lark.js).
